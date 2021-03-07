@@ -12,6 +12,6 @@ Project for the course <b>Techniques of Artificial Intelligence</b>
 
 ## Screenshot
 
-Using the connect-4 python game from : https://github.com/loricvdt/connect-four
+Using the connect-4 python game developped by <b>loricvdt</b> accessible here : https://github.com/loricvdt/connect-four
 
 ![Connect Four screenshot](screenshot.png)
