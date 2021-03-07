@@ -1,10 +1,10 @@
 # deep-learning-connect-4
 
-Reinforcement Learning to learn the game connect-4
+<b>Reinforcement Learning</b> to learn the game connect-4
 
 Project of the course <b>Techniques of Artificial Intelligence</b>
 
-Key words :
+<b>Key words :</b>
 - Artificial neural network
 - Backpropagation
 - Self-play
