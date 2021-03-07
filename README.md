@@ -7,3 +7,9 @@ Key words :
 - Backpropagation
 - Self-play
 - Monte-Carlo tree search
+
+## Screenshot
+
+Using the connect-4 python game from : https://github.com/loricvdt/connect-four
+
+![Connect Four screenshot](screenshot.png)
