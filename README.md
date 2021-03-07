@@ -2,6 +2,8 @@
 
 Reinforcement Learning to learn the game connect-4
 
+Project of the course Techniques of Artificial Intelligence
+
 Key words :
 - Artificial neural network
 - Backpropagation
