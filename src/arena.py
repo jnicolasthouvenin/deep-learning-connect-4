@@ -7,10 +7,3 @@ class Arena(object):
         print("ArenaConstructor")
         self.redNet = redNet
         self.yellowNet = yellowNet
-    
-    """def playMove(self):
-        print("playMove")
-        inputLayer = boardToInputLayer(board)
-        print("inputLayer : ",inputLayer)
-        
-        return 1"""
