@@ -232,14 +232,14 @@ def draw_board_bis():
 	pygame.quit()
 
 def boardToInputLayer(board):
-    """print("hello")
+	"""
+	print("hello")
+	print("layer = ",layer)
 
-	print("layer = ",layer)"""
-
-	"""if (turn == 1):
+	if (turn == 1):
 		layer[84] = 0
 	else :
-		layer[84] = 1"""
+		layer[84] = 1
 	
     for raw in range(7):
         for line in range(6):
@@ -250,6 +250,22 @@ def boardToInputLayer(board):
 				layer[42 + raw*6 + line] = 1
 			layer = np.append(layer,state)
 	
-    return layer
+    return layer"""
+	layer = np.zeros(84)
+	if (turn == 1):
+		layer[84] = 0
+	else :
+		layer[84] = 1
+
+	for raw in range(7):
+        for line in range(6):
+            state = board[raw][line] # state of the square (raw,line) : 0 for empty, 1 for yellow, 2 for red
+            if state == 1:
+				layer[raw*6 + line] = 1
+			elif state == 2:
+				layer[42 + raw*6 + line] = 1
+
+	
+	return 1
 
 print("gameFile")
