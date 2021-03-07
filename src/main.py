@@ -57,9 +57,9 @@ def main2():
     redNet = Network([42,16,7])
     yellowNet = Network([42,16,7])
 
-    arena = Arena(redNet,yellowNet)
+    #arena = Arena(redNet,yellowNet)
 
-    arena.playMove()
+    #arena.playMove()
 
     print("endMain2")
 

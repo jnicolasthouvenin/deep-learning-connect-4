@@ -196,7 +196,7 @@ def update_view():
 	pygame.display.update()
 
 
-if __name__ == '__main__' or True:
+if __name__ == '__main__':
 	init()
 	reset_game()
 
@@ -232,9 +232,9 @@ def draw_board_bis():
 	pygame.quit()
 
 def boardToInputLayer(board):
-    print("hello")
+    """print("hello")
 
-	print("layer = ",layer)
+	print("layer = ",layer)"""
 
 	"""if (turn == 1):
 		layer[84] = 0
