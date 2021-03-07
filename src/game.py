@@ -196,7 +196,7 @@ def update_view():
 	pygame.display.update()
 
 
-if __name__ == '__main__' :
+if __name__ == '__main__' or True:
 	init()
 	reset_game()
 
@@ -232,11 +232,24 @@ def draw_board_bis():
 	pygame.quit()
 
 def boardToInputLayer(board):
-    layer = np.empty(0,dtype=int)
+    print("hello")
+
+	print("layer = ",layer)
+
+	"""if (turn == 1):
+		layer[84] = 0
+	else :
+		layer[84] = 1"""
+	
     for raw in range(7):
         for line in range(6):
             state = board[raw][line] # state of the square (raw,line) : 0 for empty, 1 for yellow, 2 for red
-            layer = np.append(layer,state)
+            if state == 1:
+				layer[raw*6 + line] = 1
+			elif state == 2:
+				layer[42 + raw*6 + line] = 1
+			layer = np.append(layer,state)
+	
     return layer
 
 print("gameFile")

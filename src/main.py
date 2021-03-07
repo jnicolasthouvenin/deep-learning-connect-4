@@ -54,10 +54,12 @@ def main1():
     print("end")
 
 def main2():
-    redNet = Network([3,2,3])
-    yellowNet = Network([3,2,3])
+    redNet = Network([42,16,7])
+    yellowNet = Network([42,16,7])
 
     arena = Arena(redNet,yellowNet)
+
+    arena.playMove()
 
     print("endMain2")
 
