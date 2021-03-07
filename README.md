@@ -2,7 +2,7 @@
 
 Reinforcement Learning to learn the game connect-4
 
-Project of the course #Techniques of Artificial Intelligence#
+Project of the course <b>Techniques of Artificial Intelligence</b>
 
 Key words :
 - Artificial neural network
