@@ -2,6 +2,7 @@
 import pygame
 import pygame.gfxdraw
 import random
+import numpy as np
 
 # Game settings
 rows = 6
@@ -229,5 +230,13 @@ def draw_board_bis():
 		update_view()
 
 	pygame.quit()
+
+def boardToInputLayer(board):
+    layer = np.empty(0,dtype=int)
+    for raw in range(7):
+        for line in range(6):
+            state = board[raw][line] # state of the square (raw,line) : 0 for empty, 1 for yellow, 2 for red
+            layer = np.append(layer,state)
+    return layer
 
 print("gameFile")

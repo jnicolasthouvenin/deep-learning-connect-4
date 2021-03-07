@@ -3,16 +3,9 @@ import random
 import numpy as np
 from game import *
 from network import *
+from arena import *
 
-def boardToInputLayer(board):
-    layer = np.empty(0,dtype=int)
-    for raw in range(7):
-        for line in range(6):
-            state = board[raw][line] # state of the square (raw,line) : 0 for empty, 1 for yellow, 2 for red
-            layer = np.append(layer,state)
-    return layer
-
-def main():
+def main1():
 
     print("hello")
 
@@ -31,7 +24,42 @@ def main():
     outputLayer = nw.feedforward(inputLayer)
     print("outputLayer = ",outputLayer)
 
+    print("try backpropagation")
+
+    gradient_b, gradient_w = nw.backpropagate(inputLayer,[0,1,0])
+
+    print("FIN BACKPROGATION")
+
+    print("gradient_b : ",gradient_b)
+    print("gradient_w : ",gradient_w)
+
+    a = np.array([1,2])
+    b = np.tile(a,3).reshape(3,2)
+    print("b : ",b)
+
+    """a = np.array([4,5])
+    newA = np.array([a,a,a]).transpose()
+    print("operation sur a")
+    print(newA)
+    delta = np.array([1,2,3])
+    print("gradient_w")
+    gradient_w = np.multiply(newA,delta).transpose()
+    print(gradient_w)
+    x1 = np.arange(6.0).reshape((3,2)).transpose()
+    x2 = np.arange(3.0)
+    print(x1)
+    print(x2)
+    print(np.multiply(x1,x2).transpose())"""
+
     print("end")
+
+def main2():
+    redNet = Network([3,2,3])
+    yellowNet = Network([3,2,3])
+
+    arena = Arena(redNet,yellowNet)
+
+    print("endMain2")
 
 """def sandPot():
     print("weights")
@@ -63,4 +91,4 @@ def main():
         a = np.dot(w,a) + b
         print("a = ",a)"""
 
-main()
+main2()
