@@ -1,14 +1,13 @@
 # deep-learning-connect-4
 
-<b>Reinforcement Learning</b> to learn the game connect-4
+<b>Deep Learning</b> to learn the game connect-4
 
 Project for the course <b>Techniques of Artificial Intelligence</b>
 
 <b>Key words :</b>
-- Artificial neural network
+- Supervised Learning
+- Artificial Neural Network
 - Backpropagation
-- Self-play
-- Monte-Carlo tree search
 
 ## Screenshot
 
