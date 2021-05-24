@@ -2,22 +2,28 @@
 import numpy as np
 import random
 
-class Network(object):
+class NeuralNetwork(object):
+
     def __init__(self,sizes):
-        """Constructor."""
-        self.num_layers = len(sizes)
+        """Initialize the neural network."""
+        self.nb_layers = len(sizes)
         self.sizes = sizes
         self.biases = [np.random.randn(y, 1) for y in sizes[1:]]
         self.weights = [np.random.randn(y, x) for x,y in zip(sizes[:-1], sizes[1:])]
 
-    def feedforward(self, x):
-        """Return the output of the network if x is input."""
-        for b, w in zip(self.biases, self.weights):
-            b = np.squeeze(b) # convert b in the right format
-            x = sigmoid(np.dot(w, x)+b)
-        return x
+    def forward(self, input):
+        """Computes the output of the network, when fowarding into it the given input x."""
+        for bias, weights in zip(self.biases, self.weights):
+            bias = np.squeeze(bias) # convert b in the right format
+            weightsTimesInput = np.dot(weights, input)
+            input = sigmoid(weightsTimesInput+bias)
+        return input
 
     def cost_derivative(self, output_activations, y):
+        print("output_activations")
+        print(output_activations)
+        print("y")
+        print(y)
         """Return the vector of partial derivatives \partial C_x /
         \partial a for the output activations."""
         return (output_activations-y)
@@ -34,27 +40,35 @@ class Network(object):
         self.biases = [b-(eta/len(mini_batch))*nb
                        for b, nb in zip(self.biases, nabla_b)]
 
-    def backpropagate(self, x, y):
+    def backprop(self, input, output):
+        """Computes the gradients for biases and weights to correct to neural network"""
+
+        # initialize gradients
         gradient_b = [np.zeros(b.shape) for b in self.biases]
         gradient_w = [np.zeros(w.shape) for w in self.weights]
-        # feedforward
-        activation = x
-        activationsList = [np.array(x)] # list to store all the activations, layer by layer
-        zList = [] # list to store all the z vectors, layer by layer
-        for b, w in zip(self.biases, self.weights):
-            b = np.squeeze(b)
-            z = np.dot(w, activation)+b
-            zList.append(z)
-            activation = sigmoid(z)
-            activationsList.append(np.array(activation))
-        # backward pass
-        delta = self.cost_derivative(activationsList[-1], y) * sigmoid_prime(zList[-1])
+
+        # pass the input through the neural network
+
+        # creating the structures for storing the z and activations for each layer
+        zList = [] # z vectors for each layer
+        activation = input # the first activation vector consists in the input vector
+        activationsList = [np.array(input)] # activations vectors for each layer
+        # iterating on each layer
+        for biases, weights in zip(self.biases, self.weights): # get the biases and weights for the current layer
+            biases = np.squeeze(biases)
+            z = np.dot(weights, activation)+biases # compute z (using the previous activation vector)
+            zList.append(z) # store the value z of the layer
+            activation = sigmoid(z) # compute the activation from z and the sigmoid function
+            activationsList.append(np.array(activation)) # store the activation of the layer
+
+        # backpropagate using the computed activations
+        delta = self.cost_derivative(activationsList[-1], output) * sigmoid_prime(zList[-1])
         gradient_b[-1] = delta
         gradient_w[-1] = calculateGradientW(activationsList[-2],delta,len(zList[-1]))
         print("gradient_b[-1] = ",gradient_b[-1])
         print("gradient_w[-1] = ",gradient_w[-1])
         
-        for l in range(2, self.num_layers):
+        for l in range(2, self.nb_layers):
             print("for")
             z = zList[-l]
             print("len(z) : ",len(z))
