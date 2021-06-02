@@ -1,7 +1,4 @@
 
-import numpy as np
-import pandas as np
-
 from game import *
 from encoder import *
 from arena import *
