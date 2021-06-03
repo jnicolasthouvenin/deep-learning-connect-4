@@ -126,7 +126,7 @@ class NeuralNetwork:
             self.weights = [ w - self.l_r * nw for w, nw in zip(self.weights, gradient_weights) ]
             self.biases = [ b - self.l_r * nb for b, nb in zip(self.biases, gradient_bias) ]
 
-    def supervised_learning(self,x_train,y_train,x_test,y_test,lenTest,it,EPOCH=100,batch_size=1000,file="network_rand_1/net_30_",write=False):
+    def supervised_learning(self,x_train,y_train,x_test,y_test,lenTest,it,EPOCH=100,batch_size=1000,dataset="classic",file="networks/",write=False):
     
         print("[INIT] - classification rate =",self.evaluate(x_test,y_test))
 
@@ -149,7 +149,7 @@ class NeuralNetwork:
             print(j," - classification rate =",self.evaluate(x_test,y_test))
             if j%10 == 0:
                 if write:
-                    self.save((file+str(it)+"_"+str(j)))
+                    self.save((file+dataset+"_"+str(it)+"_"+str(j)))
 
     def evaluate(self, x_test, y_test):
         test_results = [ (ENCODER.encode_prediction(self.forward(_x)), (_y)) for _x, _y in zip(x_test, y_test) ]
